@@ -13,7 +13,8 @@ class WishlistScreen extends StatefulWidget {
 class _WishlistScreenState extends State<WishlistScreen> {
   @override
   Widget build(BuildContext context) {
-    final movies = WishlistManager.wishlist;
+    // 🔥 Hive se movies nikali
+    final movies = WishlistManager.getAllMovies();
 
     return Scaffold(
       appBar: AppBar(
@@ -22,17 +23,10 @@ class _WishlistScreenState extends State<WishlistScreen> {
       ),
       body: movies.isEmpty
           ? const Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.favorite_border, size: 60, color: Colors.grey),
-                  SizedBox(height: 10),
-                  Text("No movies added yet", style: TextStyle(color: Colors.grey)),
-                ],
-              ),
+              child: Text("No saved movies", style: TextStyle(color: Colors.grey)),
             )
           : GridView.builder(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(10),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 childAspectRatio: 0.7,
@@ -44,10 +38,8 @@ class _WishlistScreenState extends State<WishlistScreen> {
                 final movie = movies[index];
                 return GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => DetailsScreen(movie: movie)),
-                    ).then((_) => setState(() {})); // Refresh on back
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => DetailsScreen(movie: movie)))
+                        .then((_) => setState((){})); // Refresh when back
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(6),

@@ -1,0 +1,3 @@
+[build]
+publish = "build/web"
+command = "flutter build web && cp web_redirects/_redirects build/web/_redirects"
