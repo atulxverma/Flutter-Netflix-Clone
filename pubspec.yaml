@@ -1,0 +1,34 @@
+name: netflix_clone
+description: A Netflix-style Flutter movie app.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.0
+  # Optimized image loading
+  cached_network_image: ^3.3.0 
+  # Netflix-style fonts
+  google_fonts: ^6.1.0
+  # Icons
+  cupertino_icons: ^1.0.6
+  carousel_slider: ^5.0.0  
+  youtube_player_flutter: ^9.0.1  # Video chalane ke liye
+  hive: ^2.2.3                    # Database ke liye
+  hive_flutter: ^1.1.0            # Flutter ke sath Hive jodna
+  path_provider: ^2.1.2 
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    # Ensure you have a logo.png or netflix_logo.png in assets/images/
